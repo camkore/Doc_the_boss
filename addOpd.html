@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add OPD</title>
+     <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+   <style>
+   body {
+         background: #e2e1e0;
+        }
+   .card{
+     background: #fff;
+   padding:5%;
+   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+   } 
+   </style>
+      <nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.html">Astha Clinic</a>
+    </div>
+    <ul class="nav navbar-nav">
+        <li><a href="index.html">home</a></li>
+       <li><a href="patients.php">Patient</a></li>
+       <li><a href="addPatient.html">Add Patient</a></li>
+       <li><a href="current_opd.html">Todays OPD</a></li>
+        
+    </ul>
+      
+  </div>
+</nav>
+<div class="container" style="margin-top:5%">
+    <div class="row">
+     <form class="col-md-6">
+         <div class="card">
+        <h3 style="text-align:center">OPD Details</h3>
+        <lable>Date</lable><input class = "form-control" type="text" id="dat"><br>
+         <lable>Name</lable><input class = "form-control" type="text" id="name"><span id="error" style="color:red"></span><br>
+        <lable>Procedure</lable><input class = "form-control" type="text" id="proc"><br>
+        <lable>Planned Procedure</lable><input class = "form-control" type="text" id="pl_proc"><br>
+        <lable>Expenses</lable><input class = "form-control"type="text" id="expense"><br>
+        <lable>Fees</lable><input class = "form-control" type="text" id="fees"><br>
+        <lable>Comments</lable><input class = "form-control" type="text" id="comment"><br>
+        <input class = "btn btn-primary btn-sm btn-block" type="button" value="submit" id="submit" onclick="opd()">
+        </div> 
+    </form>
+    
+         <div class="col-md-6" id="users"></div>
+    </div>
+</div>
+    <script>
+    $(document).ready(function(){
+        var fullDate = new Date()
+        var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+        var currentDate =  fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
+        $('#dat').val(currentDate);
+        
+    });   
+    $("#name").keyup(function(){
+        if($("#name").val()!=""){
+           document.getElementById("error").innerHTML="";
+         var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("users").innerHTML = this.responseText;    
+            }
+          };
+          xhttp.open("POST", "getPatients.php", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send("name="+document.getElementById("name").value);
+        }
+    });
+  
+   function selectPatient(id){
+      var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("name").value = this.responseText;    
+            }
+          };
+          xhttp.open("POST", "selectPatient.php", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+          xhttp.send("id="+id);
+          localStorage.setItem("id",id);
+           document.getElementById("users").innerHTML = "";
+    }
+   function opd(){
+        var id = localStorage.getItem("id");
+       if(document.getElementById("name").value==""){
+       document.getElementById("error").innerHTML="Please enter patient's name";
+       }
+     else{
+         if(document.getElementById("expense").value=="")
+           document.getElementById("expense").value="0.00";
+         if(document.getElementById("fees").value=="")
+           document.getElementById("fees").value="0.00";
+         var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) { 
+                console.log(this.responseText);
+            }
+          };
+          xhttp.open("POST", "addOpd.php", true);
+          xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+ xhttp.send("id="+id+"&date="+document.getElementById("dat").value+"&fee="+document.getElementById("fees").value+"&proc="+document.getElementById("proc").value+"&pproc="+document.getElementById("pl_proc").value+"&expense="+document.getElementById("expense").value+"&comment="+document.getElementById("comment").value+"&name="+document.getElementById("name").value );
+   localStorage.setItem("id",null);
+    window.location.href= "index.html";
+   }
+   }
+    </script>
+</body>
+
+</html>
