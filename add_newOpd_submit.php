@@ -57,7 +57,7 @@ $ointment_instructions=$data1['ointment_instructions'];
     $ointmnet_dose="$ointmnet_dose1-$ointmnet_dose2-$ointmnet_dose3";
 
      mysqli_query ($con,"set character_set_results='utf8'"); 
-    $sql12="INSERT INTO ointment(opd_id, ointmnet1, ointment2, ointment3,quntity, timing, instruction,ointment_date) VALUES ('$addOpd_ID','$addOpd_ointment1','$addOpd_ointment2','$addOpd_ointment1','$addOpd_quantity','$addOpd_dose','$ointment_instructions','$addOpd_date')";
+    $sql12="INSERT INTO ointment(opd_id, ointmnet1, ointment2, ointment3,quntity, timing, instruction,ointment_date) VALUES ('$addOpd_ID','$addOpd_ointment1','$addOpd_ointment2','$addOpd_ointment3','$ointment_quantity','$ointmnet_dose','$ointment_instructions','$addOpd_date')";
     mysqli_query($con,$sql12);
 }
      $sql22="INSERT INTO other(opd_id, other1, other2, other3, quantity, instruction,	instruction2,instruction3, other_date) VALUES ('$addOpd_ID','$other1','$other2','$other3','$other_quantity','$other_instuction','$other_instuction2','$other_instuction3','$addOpd_date')";

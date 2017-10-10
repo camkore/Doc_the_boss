@@ -140,20 +140,32 @@ $opd_patientID=$_GET['id'];
                             <label>topical1</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment1]">
+                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
+                        </div>
+                          <div class="col-md-6">
+                            <label>Quantity</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="data1[0][ointment_quantity]">
                         </div>
     <div class="col-md-6">
                             <label>topical2</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment2]">
+                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
+                        </div>
+                              <div class="col-md-6">
+                            <label>Quantity</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="data1[0][ointment_quantity]">
                         </div>
 
                             <div class="col-md-6">
                             <label>topical3</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment3]">
+                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
                         </div>
 
                         <div class="col-md-6">
@@ -189,7 +201,7 @@ $opd_patientID=$_GET['id'];
                             <label>Instructions</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" cl ass="form-control" name="data1[0][ointment_instructions]">
+                <input type="text" class="form-control" name="data1[0][ointment_instructions]">
                         </div>
                     </div>
                 </div>
@@ -313,7 +325,7 @@ $opd_patientID=$_GET['id'];
           var j=0;
     $("#appendPrescription_div1").click(function () {
          j++;
-  $("#appendointment_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>topical1</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment1]"></div><div class="col-md-6"><label>topical2</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment2]"></div><div class="col-md-6"><label>topical3</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment3]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose2]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+j+'][ointmnet_dose3]"><input type="checkbox" value="1" name="data['+j+'][ointmnet_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+j+'][ointment_instructions]"></div>');
+  $("#appendointment_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>topical1</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment1]"></div><div class="col-md-6"><label>topical2</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment2]"></div><div class="col-md-6"><label>topical3</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment3]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose2]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose3]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_instructions]"></div>');
 });
     </script>
 
