@@ -10,7 +10,7 @@ $complaint = $_POST['complaint'];
 $past = $_POST['past'];
 $drug = $_POST['drug'];
 $extra = $_POST['extra'];
-
+ 
 $con = mysqli_connect('localhost','root','','astha_clinic');
 if (!$con) {
     die('Could not connect: ' . mysqli_error($con));
