@@ -166,6 +166,7 @@ $opd_patientID=$_GET['id'];
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
+                            
                         </div>
 
                         <div class="col-md-6">
