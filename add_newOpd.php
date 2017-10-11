@@ -158,13 +158,14 @@ $opd_patientID=$_GET['id'];
                     </div>
                     
                     </div>
+            
                 </div>
  
      
 
             <div class="row">
                 <div class="col-md-6">
-                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div" value="Add Prescription">
+                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div" value="Add Prescription" onclick="appendDiv1();">
                 </div>
             </div>
                 
@@ -228,7 +229,7 @@ $opd_patientID=$_GET['id'];
         
      <div class="row">
                 <div class="col-md-6">
-                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div1" value="Add topicals">
+                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div1" value="Add topicals" onclick="appendDiv2();">
                 </div>
             </div>
                     <div id="appendother_div">
@@ -294,7 +295,7 @@ $opd_patientID=$_GET['id'];
         
      <div class="row">
                 <div class="col-md-6">
-                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div2" value="Add Other">
+                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div2" value="Add Other" onclick="appendDiv3();">
                 </div>
             </div>
  
@@ -347,26 +348,80 @@ $opd_patientID=$_GET['id'];
     </script>
     
     <script>
-        var i=0;
-    $("#appendPrescription_div").click(function () {
-         i++;
-  $("#addPrescription_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_drug]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose1]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose1]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose2]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose3]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_instructions]"></div>');
-});
         
-//$("#addPrescription_div").append('<div id="addPrescription_card"><div class="row" id="drug_searchBoxDiv"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text"  class="form-control " name="data['+i+'][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');"><div class="search_list_div" id="opdTopicalAjaxDesc"></div></div></div><div id="showOpddescription"></div></div>');
-//});
-        
-          var j=0;
-    $("#appendPrescription_div1").click(function () {
-         j++;
-  $("#appendointment_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Topical</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose2]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose3]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_instructions]"></div>');
-});
-        var k=0;
-    $("#appendPrescription_div2").click(function () {
-         k++;
-  $("#appendother_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Other</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_item]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose]"><input type="checkbox" value="1" name="data2['+k+'][other_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose2]"><input type="checkbox" value="1" name="data2['+k+'][other_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose3]"><input type="checkbox" value="1" name="data2['+k+'][other_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_instructions]"></div>');
-});
-    </script>
+var clicks = 0; 
+function appendDiv1(){
+    
+    clicks +=1;
+    
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            $("#addPrescription_div").append(this.responseText);
+            }
+        };
+        xmlhttp.open("GET","append_opd_prescription_div.php?appendPrescDrug=val1&appendCount="+clicks,true);
+        xmlhttp.send();
+
+}
+  
+
+</script>
+    
+    
+        <script>
+var clicks1 = 0;    
+function appendDiv2(){
+
+  clicks1 +=1;
+    
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            $("#appendointment_div").append(this.responseText);
+            }
+        };
+        xmlhttp.open("GET","append_opd_prescription_div.php?appendPrescTopical=val2&appendCount="+clicks1,true);
+        xmlhttp.send();
+
+}
+  
+
+</script>
+    
+    
+    
+        <script>
+var clicks2 = 0;  
+            
+function appendDiv3(){
+
+clicks2 +=1;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+            $("#appendother_div").append(this.responseText);
+            }
+        };
+        xmlhttp.open("GET","append_opd_prescription_div.php?appendPrescOther=val3&appendCount="+clicks2,true);
+        xmlhttp.send();
+
+}
+  
+
+</script>
     
     
     
