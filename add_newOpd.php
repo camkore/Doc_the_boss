@@ -10,8 +10,35 @@
     <link rel="stylesheet" href="css/add_newOpd.css">
     <link rel="stylesheet" type="text/css" href="js/dhtmlxcalendar.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
-    
-<style>
+
+    <style type="text/css">
+.bs-example{
+	font-family: sans-serif;
+	position: relative;
+	margin: 50px;
+}
+.typeahead, .tt-query, .tt-hint {
+	border: 2px solid #CCCCCC;
+	border-radius: 0px;
+	font-size: 24px;
+	height: 30px;
+	line-height: 30px;
+	outline: medium none;
+	padding: 8px 12px;
+	width: 100%;
+}
+.typeahead {
+	background-color: #FFFFFF;
+}
+.typeahead:focus {
+	border: 2px solid #0097CF;
+}
+.tt-query {
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+	color: #999999;
+}
 .tt-dropdown-menu {
 	background-color: #FFFFFF;
 	border: 1px solid rgba(0, 0, 0, 0.2);
@@ -19,13 +46,30 @@
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin-top: 12px;
 	padding: 8px 0;
+	width: 422px;
 }
 .tt-suggestion {
-	font-size: 16px;
-	line-height: 12px;
+	font-size: 24px;
+	line-height: 24px;
 	padding: 3px 20px;
 }
+.tt-suggestion.tt-is-under-cursor {
+	background-color: #0097CF;
+	color: #FFFFFF;
+}
+.tt-suggestion p {
+	margin: 0;
+}
 
+    
+    .ajax_input{
+        margin: 0;
+        background-color: white;
+        
+    }
+        .twitter-typeahead{
+            display: block;   
+        }
 </style>
     
 </head>
@@ -101,7 +145,7 @@ $opd_patientID=$_GET['id'];
                         </div>
                         <div class="col-md-6">
 <!--                            <input type="text" class="form-control typeahead tt-query" name="data[0][addOpd_drug]" onchange="showOpdPrescription();" id="opdPrescriptionVal1">     -->
-           <input type="text" class="typeahead tt-query form-control " name="typeahead" onfocus="showOpdPrescription();" id="opdPrescriptionVal1">
+           <input type="text" class="typeahead tt-query form-control ajax_input" name="typeahead" onfocus="showOpdPrescription('showOpddescription');" id="opdPrescriptionVal1">
                             
                             
                         </div>
@@ -161,13 +205,19 @@ $opd_patientID=$_GET['id'];
                 
                 <div id="appendointment_div">
                     <div id="addPrescription_card">
-                    <div class="row">
+                    <div class="row" id="drug_searchBoxDiv2">
                         <div class="col-md-6">
                             <label>Topical</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
+<!--                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]" id="opdPrescriptionVal2" onfocus="showOpdPrescription1();" >-->
+                            
+                 <input type="text"  class="typeahead tt-query form-control " name="typeahead1" id="opdPrescriptionVal2" onfocus="showOpdPrescription1('showOpddescription1');" >
                         </div>
+                        </div>
+                        
+                         <div id="showOpddescription1">
+                         <div class="row">
                           <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
@@ -202,10 +252,13 @@ $opd_patientID=$_GET['id'];
                         </div>
                         <div class="col-md-6">
                 <input type="text" class="form-control" name="data1[0][ointment_instructions]">
+                        </div>               
                         </div>
+                        </div>
+                        
                     </div>
                 </div>
- </div>
+ 
         
      <div class="row">
                 <div class="col-md-6">
@@ -214,13 +267,21 @@ $opd_patientID=$_GET['id'];
             </div>
                     <div id="appendother_div">
                     <div id="addPrescription_card">
-                    <div class="row">
+                    <div class="row" id="drug_searchBoxDiv3">
                         <div class="col-md-6">
                             <label>Other</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data2[0][other_item]">
+<!--                            <input type="text" class="form-control" name="data2[0][other_item]" id="opdPrescriptionVal3" onfocus="showOpdPrescription2();" >-->
+                            
+                   <input type="text" class="form-control" class="typeahead tt-query form-control " name="typeahead2" id="opdPrescriptionVal3" onfocus="showOpdPrescription2('showOpddescription2');" >
+                            
                         </div>
+                        
+                        </div>
+                        
+                         <div id="showOpddescription2">
+                         <div class="row">
                           <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
@@ -256,9 +317,14 @@ $opd_patientID=$_GET['id'];
                         <div class="col-md-6">
                 <input type="text" class="form-control" name="data2[0][other_instructions]">
                         </div>
+                        </div>
+                             
+                        </div>
+                        
                     </div>
                 </div>
- </div>
+
+       
         
      <div class="row">
                 <div class="col-md-6">
@@ -272,10 +338,10 @@ $opd_patientID=$_GET['id'];
                 </div>
             </div>
             </form>
-        </div>
-
-
     </div>
+    </div>
+  
+ 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -295,6 +361,19 @@ $opd_patientID=$_GET['id'];
         remote:'fetch_opd_prescription.php?key=%QUERY',
         limit : 10
     });
+        
+    $('#drug_searchBoxDiv2 input').typeahead({
+        name: 'typeahead1',
+        remote:'fetch_opd_prescription1.php?key=%QUERY',
+        limit : 10
+    });
+        
+    $('#drug_searchBoxDiv3 input').typeahead({
+        name: 'typeahead2',
+        remote:'fetch_opd_prescription2.php?key=%QUERY',
+        limit : 10
+    });
+        
         
 });
     </script>
@@ -351,7 +430,7 @@ $opd_patientID=$_GET['id'];
     
     
     <script>
-function showOpdPrescription() {
+function showOpdPrescription(str2) {
    var str=document.getElementById("opdPrescriptionVal1").value;
  
         if (window.XMLHttpRequest) {
@@ -363,10 +442,56 @@ function showOpdPrescription() {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("showOpddescription").innerHTML = this.responseText;
+                document.getElementById(str2).innerHTML = this.responseText;
             }
         };
         xmlhttp.open("GET","fetch_opd_prescription_data.php?prescriptionStr="+str,true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+    <script>
+function showOpdPrescription1(str2) {
+   var str=document.getElementById("opdPrescriptionVal2").value;
+ 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription_data1.php?prescriptionStr="+str,true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+    <script>
+function showOpdPrescription2(str2) {
+   var str=document.getElementById("opdPrescriptionVal3").value;
+ 
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription_data2.php?prescriptionStr="+str,true);
         xmlhttp.send();
     
 }
