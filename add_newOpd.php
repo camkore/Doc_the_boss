@@ -20,7 +20,7 @@
 .typeahead, .tt-query, .tt-hint {
 	border: 2px solid #CCCCCC;
 	border-radius: 0px;
-	font-size: 24px;
+	font-size: 16px;
 	height: 30px;
 	line-height: 30px;
 	outline: medium none;
@@ -46,7 +46,8 @@
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 	margin-top: 12px;
 	padding: 8px 0;
-	width: 422px;
+/*	width: 422px;*/
+    font-size: 16px;
 }
 .tt-suggestion {
 	font-size: 24px;
