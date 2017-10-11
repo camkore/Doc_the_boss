@@ -267,12 +267,12 @@ $opd_patientID=$_GET['id'];
                                 <label> - M</label>
                             </label>
                             <label class="checkbox-inline">
-                                    <input type='hidden' value='0' name="data2[0][other_dose]">
+                                    <input type='hidden' value='0' name="data2[0][other_dose2]">
                         <input type='checkbox' value='1' name="data2[0][other_dose2]">
                                 <label> - A</label>
                             </label>
                             <label class="checkbox-inline">
-                                   <input type='hidden' value='0' name="data2[0][other_dose]">
+                                   <input type='hidden' value='0' name="data2[0][other_dose3]">
                         <input type='checkbox' value='1' name="data2[0][other_dose3]">
                                 <label> - N</label>
                             </label>
@@ -426,65 +426,65 @@ clicks2 +=1;
     
     
     <script>
-function showOpdPrescription(str1,str2) {
-   var str=document.getElementById(str1).value;
- 
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById(str2).innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","fetch_opd_prescription_data.php?prescriptionStr="+str,true);
-        xmlhttp.send();
-    
-}
+//function showOpdPrescription(str1,str2) {
+//   var str=document.getElementById(str1).value;
+// 
+//        if (window.XMLHttpRequest) {
+//            xmlhttp = new XMLHttpRequest();
+//        } else {
+//            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//        }
+//        xmlhttp.onreadystatechange = function() {
+//            if (this.readyState == 4 && this.status == 200) {
+//                document.getElementById(str2).innerHTML = this.responseText;
+//            }
+//        };
+//        xmlhttp.open("GET","fetch_opd_prescription_data.php?prescriptionStr="+str,true);
+//        xmlhttp.send();
+//    
+//}
 </script>
 
 
     <script>
-function showOpdPrescription1(str1,str2) {
-   var str=document.getElementById(str1).value;
- 
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById(str2).innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","fetch_opd_prescription_data1.php?prescriptionStr="+str,true);
-        xmlhttp.send();
-    
-}
+//function showOpdPrescription1(str1,str2) {
+//   var str=document.getElementById(str1).value;
+// 
+//        if (window.XMLHttpRequest) {
+//            xmlhttp = new XMLHttpRequest();
+//        } else {
+//            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//        }
+//        xmlhttp.onreadystatechange = function() {
+//            if (this.readyState == 4 && this.status == 200) {
+//                document.getElementById(str2).innerHTML = this.responseText;
+//            }
+//        };
+//        xmlhttp.open("GET","fetch_opd_prescription_data1.php?prescriptionStr="+str,true);
+//        xmlhttp.send();
+//    
+//}
 </script>
 
 
     <script>
-function showOpdPrescription2(str1,str2) {
-   var str=document.getElementById(str1).value;
- 
-        if (window.XMLHttpRequest) {
-            xmlhttp = new XMLHttpRequest();
-        } else {
-            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById(str2).innerHTML = this.responseText;
-            }
-        };
-        xmlhttp.open("GET","fetch_opd_prescription_data2.php?prescriptionStr="+str,true);
-        xmlhttp.send();
-    
-}
+//function showOpdPrescription2(str1,str2) {
+//   var str=document.getElementById(str1).value;
+// 
+//        if (window.XMLHttpRequest) {
+//            xmlhttp = new XMLHttpRequest();
+//        } else {
+//            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+//        }
+//        xmlhttp.onreadystatechange = function() {
+//            if (this.readyState == 4 && this.status == 200) {
+//                document.getElementById(str2).innerHTML = this.responseText;
+//            }
+//        };
+//        xmlhttp.open("GET","fetch_opd_prescription_data2.php?prescriptionStr="+str,true);
+//        xmlhttp.send();
+//    
+//}
 </script>
 
 

@@ -23,8 +23,9 @@ $appendCount=$_GET['appendCount'];
                         <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="data[<?php echo $appendCount;?>][addOpd_quantity]">
+          <div class="col-md-6">
+                <input type="text" class="form-control" name="data[<?php echo $appendCount;?>][addOpd_quantity]">
+  
                         </div>
 
                         <div class="col-md-6">
@@ -165,12 +166,12 @@ $appendCount=$_GET['appendCount'];
                                 <label> - M</label>
                             </label>
                             <label class="checkbox-inline">
-                                    <input type='hidden' value='0' name="data2[<?php echo $appendCount;?>][other_dose]">
+                                    <input type='hidden' value='0' name="data2[<?php echo $appendCount;?>][other_dose2]">
                         <input type='checkbox' value='1' name="data2[<?php echo $appendCount;?>][other_dose2]">
                                 <label> - A</label>
                             </label>
                             <label class="checkbox-inline">
-                                   <input type='hidden' value='0' name="data2[<?php echo $appendCount;?>][other_dose]">
+                                   <input type='hidden' value='0' name="data2[<?php echo $appendCount;?>][other_dose3]">
                         <input type='checkbox' value='1' name="data2[<?php echo $appendCount;?>][other_dose3]">
                                 <label> - N</label>
                             </label>
