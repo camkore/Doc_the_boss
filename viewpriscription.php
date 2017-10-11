@@ -101,10 +101,7 @@ $r_id=$_GET['row_id'];
 }
 ?>
 
-                                            <?php
-while($row = mysqli_fetch_array($result3)) {
-$sr++;
-?>
+
 
                                                 <?php
 while($row = mysqli_fetch_array($result1)) {
@@ -116,9 +113,7 @@ $sr++;
                                                             <?php echo $sr;?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $row["ointmnet1"];?> +
-                                                                <?php echo $row["ointment2"];?> +
-                                                                    <?php echo $row["ointment3"];?>
+                                                            <?php echo $row["ointmnet1"];?>
                                                         </td>
                                                         <td>
                                                             <?php echo $row["quntity"];?>
@@ -136,48 +131,28 @@ $sr++;
 }
 }
 ?>
+                                            <?php
+while($row = mysqli_fetch_array($result3)) {
+$sr++;
+?>
+                                                         <tr>
+                                                        <td>
+                                                            <?php echo $sr;?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row["other"];?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row["quantity"];?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row["timing"];?>
+                                                        </td>
+                                                        <td>
+                                                            <?php echo $row["instruction"];?>
+                                                        </td>
 
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $sr;?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $row["other1"];?>
-                                                            </td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td>
-                                                                <?php echo $row["instruction"];?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $sr+1;?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $row["other2"];?>
-                                                            </td>
-                                                            <td></td>
-                                                            <td></td>
-                                                            <td>
-                                                                <?php echo $row["instruction2"];?>
-                                                            </td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td>
-                                                                <?php echo $sr+2;?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $row["other3"];?>
-                                                            </td>
-                                                            <td>
-                                                                <?php echo $row["quantity"];?>
-                                                            </td>
-                                                            <td></td>
-                                                            <td>
-                                                                <?php echo $row["instruction3"];?>
-                                                            </td>
-                                                        </tr>
+                                                    </tr>
 
                                                         <?php
              }

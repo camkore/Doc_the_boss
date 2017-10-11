@@ -146,9 +146,8 @@ echo "$follow_up <br>";
                                                                 <?php echo $sr;?>
                                                             </td>
                                                             <td>
-                                                                <?php echo strtoupper($row["ointmnet1"]);?> +
-                                                                    <?php echo strtoupper($row["ointment2"]);?> +
-                                                                        <?php echo strtoupper($row["ointment3"]);?>
+                                                               <?php echo $row["ointmnet1"];?>
+                                                                
                                                             </td>
                                                             <td>
                                                                 <?php echo $row["quntity"];?>
@@ -170,52 +169,25 @@ echo "$follow_up <br>";
                                                                 while($row = mysqli_fetch_array($result3)) {
                                                                 $sr++;
                                                             ?>
-                                                                <tr>
-                                                                    <td>
-                                                                        <?php echo $sr;?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php echo strtoupper($row["other1"]);?>
-                                                                    </td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td>
-                                                                        <?php echo ucfirst($row["instruction"]);?>
-                                                                    </td>
+                                                                      <tr>
+                                                            <td>
+                                                                <?php echo $sr;?>
+                                                            </td>
+                                                            <td>
+                                                               <?php echo $row["other"];?>
+                                                                
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row["quantity"];?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $row["timing"];?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo ucfirst($row["instruction"]);?>
+                                                            </td>
 
-
-
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        <?php echo $sr+1;?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php echo strtoupper($row["other2"]);?>
-                                                                    </td>
-                                                                    <td></td>
-                                                                    <td></td>
-                                                                    <td>
-                                                                        <?php echo ucfirst($row["instruction2"]);?>
-                                                                    </td>
-                                                                </tr>
-
-                                                                <tr>
-                                                                    <td>
-                                                                        <?php echo $sr+2;?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php echo strtoupper($row["other3"]);?>
-                                                                    </td>
-                                                                    <td>
-                                                                        <?php echo $row["quantity"];?>
-                                                                    </td>
-                                                                    <td></td>
-                                                                    <td>
-                                                                        <?php echo ucfirst($row["instruction3"]);?>
-                                                                    </td>
-                                                                </tr>
+                                                        </tr>
 
                                                                 <?php
                                                                     }

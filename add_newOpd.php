@@ -11,7 +11,32 @@
     <link rel="stylesheet" type="text/css" href="js/dhtmlxcalendar.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 
-
+    
+<style>
+    
+.search_list_div{
+    background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+        
+.search_list_div ul{
+    list-style: none;
+    font-size: 16px;
+    padding-left: 8px;  
+}
+        
+.search_list{
+     padding: 4px;
+}
+        
+.search_list:hover{
+    cursor: pointer;
+    background-color:#0097CF;
+}
+        
+</style>
+    
 </head>
 
 <body>
@@ -79,14 +104,20 @@ $opd_patientID=$_GET['id'];
 
             <div id="addPrescription_div">
                 <div id="addPrescription_card">
-                    <div class="row">
+                    <div class="row" id="drug_searchBoxDiv">
                         <div class="col-md-6">
                             <label>Drug</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data[0][addOpd_drug]">
+                            
+<input type="text"  class="form-control " name="data[0][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');">
+<div class="search_list_div" id="opdTopicalAjaxDesc"></div> 
+                            
                         </div>
+                    </div>
 
+                    <div id="showOpddescription">
+                       <div class="row">
                         <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
@@ -122,10 +153,14 @@ $opd_patientID=$_GET['id'];
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="data[0][addOpd_instructions]">
                         </div>
+                           
+                    </div>
+                    </div>
+                    
                     </div>
                 </div>
  
-            </div>
+     
 
             <div class="row">
                 <div class="col-md-6">
@@ -135,48 +170,28 @@ $opd_patientID=$_GET['id'];
                 
                 <div id="appendointment_div">
                     <div id="addPrescription_card">
-                    <div class="row">
+                    <div class="row" id="drug_searchBoxDiv2">
                         <div class="col-md-6">
-                            <label>topical1</label>
+                            <label>Topical</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
+               
+<input type="text"  class="form-control " name="data1[0][addOpd_ointment]" id="opdPrescriptionVal2" onfocusout="showOpdPrescription1('opdPrescriptionVal2','showOpddescription1');" onkeyup="ajaxInputSearch1('opdPrescriptionVal2','opdTopicalAjaxDesc1');">
+<div class="search_list_div" id="opdTopicalAjaxDesc1"></div>                            
+                            
                         </div>
+                        </div>
+                        
+                         <div id="showOpddescription1">
+                         <div class="row">
                           <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
                         <div class="col-md-6">
                             <input type="text" class="form-control" name="data1[0][ointment_quantity]">
                         </div>
-    <div class="col-md-6">
-                            <label>topical2</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
-                        </div>
-                              <div class="col-md-6">
-                            <label>Quantity</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][ointment_quantity]">
-                        </div>
-
-                            <div class="col-md-6">
-                            <label>topical3</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]">
-                            
-                        </div>
-
-                        <div class="col-md-6">
-                            <label>Quantity</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="data1[0][ointment_quantity]">
-                        </div>
-
-                        <div class="col-md-6">
+ 
+                         <div class="col-md-6">
                             <label>Dose</label>
                         </div>
                         
@@ -203,89 +218,103 @@ $opd_patientID=$_GET['id'];
                         </div>
                         <div class="col-md-6">
                 <input type="text" class="form-control" name="data1[0][ointment_instructions]">
+                        </div>               
                         </div>
+                        </div>
+                        
                     </div>
                 </div>
- </div>
+ 
         
      <div class="row">
                 <div class="col-md-6">
                     <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div1" value="Add topicals">
                 </div>
             </div>
-                    <div id="appendointment_div">
-            
-                    <div class="row">
+                    <div id="appendother_div">
+                    <div id="addPrescription_card">
+                    <div class="row" id="drug_searchBoxDiv3">
                         <div class="col-md-6">
-                            <label>other1</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="other1">
-                        </div>
-                            <div class="col-md-6">
-                            <label>instruction</label>
+                            <label>Other</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="other_instruction">
-                        </div>
-    <div class="col-md-6">
-                            <label>other2</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="other2">
-                        </div>
-                           <div class="col-md-6">
-                            <label>instruction</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="other_instruction2">
+                            
+<input type="text"  class="form-control " name="data2[0][other_item]" id="opdPrescriptionVal3" onfocusout="showOpdPrescription2('opdPrescriptionVal3','showOpddescription2');" onkeyup="ajaxInputSearch2('opdPrescriptionVal3','opdTopicalAjaxDesc2');">
+<div class="search_list_div" id="opdTopicalAjaxDesc2"></div>
+                            
                         </div>
                         
-
-                            <div class="col-md-6">
-                            <label>other3</label>
                         </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="other3">
-                        </div>
-       <div class="col-md-6">
-                            <label>instruction</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" class="form-control" name="other_instruction3">
-                        </div>
-                        <div class="col-md-6">
+                        
+                         <div id="showOpddescription2">
+                         <div class="row">
+                          <div class="col-md-6">
                             <label>Quantity</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" class="form-control" name="quantity">
+                            <input type="text" class="form-control" name="data2[0][other_quantity]">
+                        </div>
+ 
+                         <div class="col-md-6">
+                            <label>Dose</label>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <label class="checkbox-inline">
+                        <input type='hidden' value='0' name="data2[0][other_dose]">
+                        <input type='checkbox' value='1' name="data2[0][other_dose]">
+                                <label> - M</label>
+                            </label>
+                            <label class="checkbox-inline">
+                                    <input type='hidden' value='0' name="data2[0][other_dose]">
+                        <input type='checkbox' value='1' name="data2[0][other_dose2]">
+                                <label> - A</label>
+                            </label>
+                            <label class="checkbox-inline">
+                                   <input type='hidden' value='0' name="data2[0][other_dose]">
+                        <input type='checkbox' value='1' name="data2[0][other_dose3]">
+                                <label> - N</label>
+                            </label>
                         </div>
 
-             
-
-                      
-                         
-                      
+                        <div class="col-md-6">
+                            <label>Instructions</label>
+                        </div>
+                        <div class="col-md-6">
+                <input type="text" class="form-control" name="data2[0][other_instructions]">
+                        </div>
+                        </div>
+                             
+                        </div>
+                        
                     </div>
-                
- </div>
+                </div>
+
+       
+        
+     <div class="row">
+                <div class="col-md-6">
+                    <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div2" value="Add Other">
+                </div>
+            </div>
+ 
             <div class="row">
                 <div class="col-md-12">
                     <input type="submit" class="btn btn-success pull-right" name="add_newOpd_Submit" value="Submit">
                 </div>
             </div>
             </form>
-        </div>
-
-
     </div>
+    </div>
+  
+ 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
     <!--  Calender js-->
     <script src="js/dhtmlxcalendar.js"></script>
+
 
     <script>
         var myCalendar;
@@ -323,11 +352,154 @@ $opd_patientID=$_GET['id'];
          i++;
   $("#addPrescription_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_drug]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose1]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose1]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose2]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose3]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_instructions]"></div>');
 });
+        
+//$("#addPrescription_div").append('<div id="addPrescription_card"><div class="row" id="drug_searchBoxDiv"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text"  class="form-control " name="data['+i+'][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');"><div class="search_list_div" id="opdTopicalAjaxDesc"></div></div></div><div id="showOpddescription"></div></div>');
+//});
+        
           var j=0;
     $("#appendPrescription_div1").click(function () {
          j++;
-  $("#appendointment_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>topical1</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment1]"></div><div class="col-md-6"><label>topical2</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment2]"></div><div class="col-md-6"><label>topical3</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment3]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose2]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose3]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_instructions]"></div>');
+  $("#appendointment_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Topical</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][addOpd_ointment]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose2]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data1['+j+'][ointmnet_dose3]"><input type="checkbox" value="1" name="data1['+j+'][ointmnet_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data1['+j+'][ointment_instructions]"></div>');
 });
+        var k=0;
+    $("#appendPrescription_div2").click(function () {
+         k++;
+  $("#appendother_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Other</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_item]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose]"><input type="checkbox" value="1" name="data2['+k+'][other_dose]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose2]"><input type="checkbox" value="1" name="data2['+k+'][other_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data2['+k+'][other_dose3]"><input type="checkbox" value="1" name="data2['+k+'][other_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data2['+k+'][other_instructions]"></div>');
+});
+    </script>
+    
+    
+    
+    <script>
+function showOpdPrescription(str1,str2) {
+   var str=document.getElementById(str1).value;
+ 
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription_data.php?prescriptionStr="+str,true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+    <script>
+function showOpdPrescription1(str1,str2) {
+   var str=document.getElementById(str1).value;
+ 
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription_data1.php?prescriptionStr="+str,true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+    <script>
+function showOpdPrescription2(str1,str2) {
+   var str=document.getElementById(str1).value;
+ 
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription_data2.php?prescriptionStr="+str,true);
+        xmlhttp.send();
+    
+}
+</script>
+
+
+    
+    <script>
+    function ajaxInputSearch(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription.php?key="+str+"&key2="+str1+"&key3="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
+    
+        <script>
+    function ajaxInputSearch1(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription1.php?key="+str+"&key2="+str1+"&key3="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
+    
+    
+    <script>
+    function ajaxInputSearch2(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription2.php?key="+str+"&key2="+str1+"&key3="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
+    
+    <script>
+     function append_text(str1,str2,str3){ 
+         document.getElementById(str1).value=str2;
+         document.getElementById(str3).style.display="none";
+     }
     </script>
 
     
