@@ -110,7 +110,7 @@ $opd_patientID=$_GET['id'];
                         </div>
                         <div class="col-md-6">
                             
-<input type="text"  class="form-control " name="data[0][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription1');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');">
+<input type="text"  class="form-control " name="data[0][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');">
 <div class="search_list_div" id="opdTopicalAjaxDesc"></div> 
                             
                         </div>
@@ -352,6 +352,10 @@ $opd_patientID=$_GET['id'];
          i++;
   $("#addPrescription_div").append('<div id="addPrescription_card"><div class="row"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_drug]"></div><div class="col-md-6"><label>Quantity</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_quantity]"></div><div class="col-md-6"><label>Dose</label></div><div class="col-md-6"><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose1]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose1]"><label> - M</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose2]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose2]"><label> - A</label></label><label class="checkbox-inline"><input type="hidden" value="0" name="data['+i+'][addOpd_dose3]"><input type="checkbox" value="1" name="data['+i+'][addOpd_dose3]"><label> - N</label></label></div><div class="col-md-6"><label>Instructions</label></div><div class="col-md-6"><input type="text" class="form-control" name="data['+i+'][addOpd_instructions]"></div>');
 });
+        
+//$("#addPrescription_div").append('<div id="addPrescription_card"><div class="row" id="drug_searchBoxDiv"><div class="col-md-6"><label>Drug</label></div><div class="col-md-6"><input type="text"  class="form-control " name="data['+i+'][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');"><div class="search_list_div" id="opdTopicalAjaxDesc"></div></div></div><div id="showOpddescription"></div></div>');
+//});
+        
           var j=0;
     $("#appendPrescription_div1").click(function () {
          j++;
@@ -441,10 +445,11 @@ function showOpdPrescription2(str1,str2) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
                 document.getElementById(str2).innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","fetch_opd_prescription.php?key="+str+"&key2="+str2,true);
+        xmlhttp.open("GET","fetch_opd_prescription.php?key="+str+"&key2="+str1+"&key3="+str2,true);
         xmlhttp.send();
     }
     </script>
@@ -460,10 +465,11 @@ function showOpdPrescription2(str1,str2) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
                 document.getElementById(str2).innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","fetch_opd_prescription1.php?key="+str+"&key2="+str2,true);
+        xmlhttp.open("GET","fetch_opd_prescription1.php?key="+str+"&key2="+str1+"&key3="+str2,true);
         xmlhttp.send();
     }
     </script>
@@ -480,12 +486,20 @@ function showOpdPrescription2(str1,str2) {
         }
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).style.display="block";
                 document.getElementById(str2).innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","fetch_opd_prescription2.php?key="+str+"&key2="+str2,true);
+        xmlhttp.open("GET","fetch_opd_prescription2.php?key="+str+"&key2="+str1+"&key3="+str2,true);
         xmlhttp.send();
     }
+    </script>
+    
+    <script>
+     function append_text(str1,str2,str3){ 
+         document.getElementById(str1).value=str2;
+         document.getElementById(str3).style.display="none";
+     }
     </script>
 
     
