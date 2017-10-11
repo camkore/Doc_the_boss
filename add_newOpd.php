@@ -11,66 +11,30 @@
     <link rel="stylesheet" type="text/css" href="js/dhtmlxcalendar.css">
     <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,500,700' rel='stylesheet' type='text/css'>
 
-    <style type="text/css">
-.bs-example{
-	font-family: sans-serif;
-	position: relative;
-	margin: 50px;
-}
-.typeahead, .tt-query, .tt-hint {
-	border: 2px solid #CCCCCC;
-	border-radius: 0px;
-	font-size: 16px;
-	height: 30px;
-	line-height: 30px;
-	outline: medium none;
-	padding: 8px 12px;
-	width: 100%;
-}
-.typeahead {
-	background-color: #FFFFFF;
-}
-.typeahead:focus {
-	border: 2px solid #0097CF;
-}
-.tt-query {
-	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-}
-.tt-hint {
-	color: #999999;
-}
-.tt-dropdown-menu {
-	background-color: #FFFFFF;
-	border: 1px solid rgba(0, 0, 0, 0.2);
-	border-radius: 8px;
-	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	margin-top: 12px;
-	padding: 8px 0;
-/*	width: 422px;*/
-    font-size: 16px;
-}
-.tt-suggestion {
-	font-size: 24px;
-	line-height: 24px;
-	padding: 3px 20px;
-}
-.tt-suggestion.tt-is-under-cursor {
-	background-color: #0097CF;
-	color: #FFFFFF;
-}
-.tt-suggestion p {
-	margin: 0;
-}
-
     
-    .ajax_input{
-        margin: 0;
-        background-color: white;
+<style>
+    
+.search_list_div{
+    background-color: #FFFFFF;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
         
-    }
-        .twitter-typeahead{
-            display: block;   
-        }
+.search_list_div ul{
+    list-style: none;
+    font-size: 16px;
+    padding-left: 8px;  
+}
+        
+.search_list{
+     padding: 4px;
+}
+        
+.search_list:hover{
+    cursor: pointer;
+    background-color:#0097CF;
+}
+        
 </style>
     
 </head>
@@ -145,9 +109,9 @@ $opd_patientID=$_GET['id'];
                             <label>Drug</label>
                         </div>
                         <div class="col-md-6">
-<!--                            <input type="text" class="form-control typeahead tt-query" name="data[0][addOpd_drug]" onchange="showOpdPrescription();" id="opdPrescriptionVal1">     -->
-           <input type="text" class="typeahead tt-query form-control ajax_input" name="typeahead" onfocus="showOpdPrescription('showOpddescription');" id="opdPrescriptionVal1">
                             
+<input type="text"  class="form-control " name="data[0][addOpd_drug]" id="opdPrescriptionVal" onfocusout="showOpdPrescription('opdPrescriptionVal','showOpddescription1');" onkeyup="ajaxInputSearch('opdPrescriptionVal','opdTopicalAjaxDesc');">
+<div class="search_list_div" id="opdTopicalAjaxDesc"></div> 
                             
                         </div>
                     </div>
@@ -211,9 +175,10 @@ $opd_patientID=$_GET['id'];
                             <label>Topical</label>
                         </div>
                         <div class="col-md-6">
-<!--                            <input type="text" class="form-control" name="data1[0][addOpd_ointment]" id="opdPrescriptionVal2" onfocus="showOpdPrescription1();" >-->
+               
+<input type="text"  class="form-control " name="data1[0][addOpd_ointment]" id="opdPrescriptionVal2" onfocusout="showOpdPrescription1('opdPrescriptionVal2','showOpddescription1');" onkeyup="ajaxInputSearch1('opdPrescriptionVal2','opdTopicalAjaxDesc1');">
+<div class="search_list_div" id="opdTopicalAjaxDesc1"></div>                            
                             
-                 <input type="text"  class="typeahead tt-query form-control " name="typeahead1" id="opdPrescriptionVal2" onfocus="showOpdPrescription1('showOpddescription1');" >
                         </div>
                         </div>
                         
@@ -273,9 +238,9 @@ $opd_patientID=$_GET['id'];
                             <label>Other</label>
                         </div>
                         <div class="col-md-6">
-<!--                            <input type="text" class="form-control" name="data2[0][other_item]" id="opdPrescriptionVal3" onfocus="showOpdPrescription2();" >-->
                             
-                   <input type="text" class="form-control" class="typeahead tt-query form-control " name="typeahead2" id="opdPrescriptionVal3" onfocus="showOpdPrescription2('showOpddescription2');" >
+<input type="text"  class="form-control " name="data2[0][other_item]" id="opdPrescriptionVal3" onfocusout="showOpdPrescription2('opdPrescriptionVal3','showOpddescription2');" onkeyup="ajaxInputSearch2('opdPrescriptionVal3','opdTopicalAjaxDesc2');">
+<div class="search_list_div" id="opdTopicalAjaxDesc2"></div>
                             
                         </div>
                         
@@ -347,38 +312,9 @@ $opd_patientID=$_GET['id'];
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-
     <!--  Calender js-->
     <script src="js/dhtmlxcalendar.js"></script>
 
-    <script src="js/typeahead.min.js"></script>
-    <script>
-    $(document).ready(function(){
-        
-  
-//    $('input.typeahead').typeahead({   
-    $('#drug_searchBoxDiv input').typeahead({
-        name: 'typeahead',
-        remote:'fetch_opd_prescription.php?key=%QUERY',
-        limit : 10
-    });
-        
-    $('#drug_searchBoxDiv2 input').typeahead({
-        name: 'typeahead1',
-        remote:'fetch_opd_prescription1.php?key=%QUERY',
-        limit : 10
-    });
-        
-    $('#drug_searchBoxDiv3 input').typeahead({
-        name: 'typeahead2',
-        remote:'fetch_opd_prescription2.php?key=%QUERY',
-        limit : 10
-    });
-        
-        
-});
-    </script>
-    
 
     <script>
         var myCalendar;
@@ -431,14 +367,12 @@ $opd_patientID=$_GET['id'];
     
     
     <script>
-function showOpdPrescription(str2) {
-   var str=document.getElementById("opdPrescriptionVal1").value;
+function showOpdPrescription(str1,str2) {
+   var str=document.getElementById(str1).value;
  
         if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
-            // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -454,14 +388,12 @@ function showOpdPrescription(str2) {
 
 
     <script>
-function showOpdPrescription1(str2) {
-   var str=document.getElementById("opdPrescriptionVal2").value;
+function showOpdPrescription1(str1,str2) {
+   var str=document.getElementById(str1).value;
  
         if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
-            // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -477,14 +409,12 @@ function showOpdPrescription1(str2) {
 
 
     <script>
-function showOpdPrescription2(str2) {
-   var str=document.getElementById("opdPrescriptionVal3").value;
+function showOpdPrescription2(str1,str2) {
+   var str=document.getElementById(str1).value;
  
         if (window.XMLHttpRequest) {
-            // code for IE7+, Firefox, Chrome, Opera, Safari
             xmlhttp = new XMLHttpRequest();
         } else {
-            // code for IE6, IE5
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange = function() {
@@ -498,7 +428,65 @@ function showOpdPrescription2(str2) {
 }
 </script>
 
+
     
+    <script>
+    function ajaxInputSearch(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription.php?key="+str+"&key2="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
+    
+        <script>
+    function ajaxInputSearch1(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription1.php?key="+str+"&key2="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
+    
+    
+    <script>
+    function ajaxInputSearch2(str1,str2){ 
+        var str = document.getElementById(str1).value;
+
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById(str2).innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","fetch_opd_prescription2.php?key="+str+"&key2="+str2,true);
+        xmlhttp.send();
+    }
+    </script>
 
     
 </body>

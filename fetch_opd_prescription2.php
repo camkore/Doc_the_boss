@@ -1,14 +1,25 @@
 <?php
 include_once("db/connection.php");
-    $key=$_GET['key'];
-    $array = array();
+$key=$_GET['key'];
+$key2=$_GET['key2'];
 
 $sqlQuery="select * from other where other LIKE '%{$key}%'";
 $result = mysqli_query($con,$sqlQuery);    
 
-    while($row=mysqli_fetch_array($result))
+$count=mysqli_num_rows($result);
+if($count > 0)
+{
+    echo "<ul>";
+   while($row=mysqli_fetch_array($result))
     {
-      $array[] = $row['other'];
-    }
-    echo json_encode($array);
+      $list_arr= $row['other'];
+       ?>
+
+<li class='search_list'><?php echo $list_arr;?></li>
+
+<?php
+    } 
+    echo "</ul>";
+}
+
 ?>
