@@ -157,10 +157,8 @@ $opd_patientID=$_GET['id'];
 
                         </div>
                     </div>
+  <div class="row">
 
-
-
-                    <div class="row">
                         <div class="col-md-6">
                             <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div" value="Add Prescription">
                         </div>
@@ -229,7 +227,7 @@ $opd_patientID=$_GET['id'];
                             <input type="button" class="btn btn-primary add_btn" id="appendPrescription_div1" value="Add topicals">
                         </div>
                     </div>
-                    <div id="appendother_div">
+   <div id="appendother_div">
                         <div id="addPrescription_card">
                             <div class="row" id="drug_searchBoxDiv3">
                                 <div class="col-md-6">
@@ -262,13 +260,14 @@ $opd_patientID=$_GET['id'];
                         <input type='hidden' value='0' name="data2[0][other_dose]">
                         <input type='checkbox' value='1' name="data2[0][other_dose]">
                                 <label> - M</label>
-                                        </label>
+ </label>
                                         <label class="checkbox-inline">
                                     <input type='hidden' value='0' name="data2[0][other_dose2]">
                         <input type='checkbox' value='1' name="data2[0][other_dose2]">
                                 <label> - A</label>
                                         </label>
                                         <label class="checkbox-inline">
+
                                    <input type='hidden' value='0' name="data2[0][other_dose3]">
                         <input type='checkbox' value='1' name="data2[0][other_dose3]">
                                 <label> - N</label>
@@ -301,7 +300,8 @@ $opd_patientID=$_GET['id'];
                             <input type="submit" class="btn btn-success pull-right" name="add_newOpd_Submit" value="Submit">
                         </div>
                     </div>
-                </form>
+</form>
+
             </div>
         </div>
 
@@ -449,6 +449,7 @@ $opd_patientID=$_GET['id'];
                 };
                 xmlhttp.open("GET", "fetch_opd_prescription.php?key=" + str + "&key2=" + str1 + "&key3=" + str2, true);
                 xmlhttp.send();
+
             }
         </script>
 

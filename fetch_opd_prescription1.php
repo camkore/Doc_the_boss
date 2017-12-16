@@ -4,7 +4,7 @@ $key=$_GET['key'];
 $key2=$_GET['key2'];
 $key3=$_GET['key3'];
 
-$sqlQuery="select * from ointment where ointmnet1 LIKE '%{$key}%'";
+$sqlQuery="select DISTINCT(ointmnet1) from ointment where ointmnet1 LIKE '%{$key}%'";
 $result = mysqli_query($con,$sqlQuery);    
 
 $count=mysqli_num_rows($result);
