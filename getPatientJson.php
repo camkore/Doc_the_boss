@@ -1,9 +1,10 @@
 <?php
-$con = mysqli_connect('localhost','root','','astha_clinic');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
-mysqli_select_db($con,"astha_clinic");
+//$con = mysqli_connect('localhost','root','','astha_clinic');
+//if (!$con) {
+//    die('Could not connect: ' . mysqli_error($con));
+//}
+include_once("db/connection.php");
+//mysqli_select_db($con,"astha_clinic");
 $sql="select * from patient_details;";
 $result = mysqli_query($con,$sql);
 $emparray[] = array();

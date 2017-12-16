@@ -1,10 +1,11 @@
 <?php
 $id = $_REQUEST['id'];
-$con = mysqli_connect('localhost','root','','astha_clinic');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
-mysqli_select_db($con,"astha_clinic");
+//$con = mysqli_connect('localhost','root','','astha_clinic');
+//if (!$con) {
+//    die('Could not connect: ' . mysqli_error($con));
+//}
+include_once("db/connection.php");
+//mysqli_select_db($con,"astha_clinic");
 $sql="select name,contact,dob,place from patient_details where id=".$id.";";
 $result = mysqli_query($con,$sql);
 
