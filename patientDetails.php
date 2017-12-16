@@ -40,11 +40,12 @@
 {
 $r_id=$_GET['row_id'];
     $sr=0;
-    $con = mysqli_connect('localhost','root','','astha_clinic');
-    if (!$con) {
-        die('Could not connect: ' . mysqli_error($con));
-    }
-    mysqli_select_db($con,"astha_clinic");
+//    $con = mysqli_connect('localhost','root','','astha_clinic');
+//    if (!$con) {
+//        die('Could not connect: ' . mysqli_error($con));
+//    }
+//    mysqli_select_db($con,"astha_clinic");
+      include_once("db/connection.php");
     $sql1="select * from opd where patient_id=".$r_id.";";
     $sql="select * from patient_details where id=".$r_id.";";
     $result = mysqli_query($con,$sql);

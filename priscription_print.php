@@ -20,7 +20,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="index.html">OPD</a></li>
                 <li><a href="patients.php">Patients</a></li>
-                <li><a href="addOpd.html">Add OPD</a></li>
+<!--                <li><a href="addOpd.html">Add OPD</a></li>-->
                 <li><a href="addPatient.html">Add Patient</a></li>
             </ul>
         </div>
@@ -30,11 +30,12 @@
         $opd_id=$_COOKIE['opd_id'];
         $follow_up=$_COOKIE['follow_up'];
         $sr=0;
-        $con = mysqli_connect('localhost','root','','astha_clinic');
-        if (!$con) {
-            die('Could not connect: ' . mysqli_error($con));
-        }
-        mysqli_select_db($con,"astha_clinic");
+//        $con = mysqli_connect('localhost','root','','astha_clinic');
+//        if (!$con) {
+//            die('Could not connect: ' . mysqli_error($con));
+//        }
+//        mysqli_select_db($con,"astha_clinic");
+    include_once("db/connection.php");
 
         $sql="select * from prescription where opd_id=".$opd_id.";";
         $sql1="select * from ointment where opd_id=".$opd_id.";";
@@ -143,7 +144,15 @@ echo "$follow_up <br>";
 
                                                         <tr>
                                                             <td>
-                                                                <?php echo $sr;?>
+                                             <?php if($row["ointmnet1"]=="")
+{
+    echo "";
+}
+    else
+    {
+        echo $sr;
+    }
+                  ?>
                                                             </td>
                                                             <td>
                                                                <?php echo $row["ointmnet1"];?>
@@ -153,7 +162,15 @@ echo "$follow_up <br>";
                                                                 <?php echo $row["quntity"];?>
                                                             </td>
                                                             <td>
-                                                                <?php echo $row["timing"];?>
+                                                      <?php if($row["timing"]=="0-0-0")
+{
+    echo "";
+}
+    else
+    {
+        echo $row["timing"];
+    }
+                  ?>
                                                             </td>
                                                             <td>
                                                                 <?php echo ucfirst($row["instruction"]);?>
@@ -171,7 +188,16 @@ echo "$follow_up <br>";
                                                             ?>
                                                                       <tr>
                                                             <td>
-                                                                <?php echo $sr;?>
+                                                                <?php
+                                                        if($row["other"]=="")
+{
+    echo "";
+}
+    else
+    {
+        echo $sr;
+    }
+                  ?>
                                                             </td>
                                                             <td>
                                                                <?php echo $row["other"];?>
@@ -181,7 +207,15 @@ echo "$follow_up <br>";
                                                                 <?php echo $row["quantity"];?>
                                                             </td>
                                                             <td>
-                                                                <?php echo $row["timing"];?>
+                                                       <?php if($row["timing"]=="0-0-0")
+{
+    echo "";
+}
+    else
+    {
+        echo $row["timing"];
+    }
+                  ?>
                                                             </td>
                                                             <td>
                                                                 <?php echo ucfirst($row["instruction"]);?>

@@ -10,11 +10,12 @@
 <body>
 <?php
 $date = $_REQUEST['date'];
-$con = mysqli_connect('localhost','root','','astha_clinic');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
-mysqli_select_db($con,"astha_clinic");
+//$con = mysqli_connect('localhost','root','','astha_clinic');
+//if (!$con) {
+//    die('Could not connect: ' . mysqli_error($con));
+//}
+//mysqli_select_db($con,"astha_clinic");
+    include_once("db/connection.php");
 $sql="select * from opd where date='".$date."';";
 $result = mysqli_query($con,$sql);
 $sr = 0;

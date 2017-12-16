@@ -12,10 +12,11 @@
 
 $date = $_REQUEST['date'];
    $sr = 0;
-$con = mysqli_connect('localhost','root','','astha_clinic');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
+//$con = mysqli_connect('localhost','root','','astha_clinic');
+//if (!$con) {
+//    die('Could not connect: ' . mysqli_error($con));
+//}
+include_once("db/connection.php");
     echo" <h3>Todays Follow UP</h3>";
     echo"<table class='table table-striped'>";
    echo "<thead>";
@@ -27,7 +28,7 @@ if (!$con) {
     echo "<th>Details</th>";
      echo "</tr>";
     echo "</thead>";
-mysqli_select_db($con,"astha_clinic");
+//mysqli_select_db($con,"astha_clinic");
 $sql="select * from opd where follow_up='".$date."';";
 $result = mysqli_query($con,$sql);
 while($row = mysqli_fetch_array($result)) {

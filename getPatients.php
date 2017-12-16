@@ -16,11 +16,12 @@
 </style>
 <?php
 $name = $_REQUEST['name'];
-$con = mysqli_connect('localhost','root','','astha_clinic');
-if (!$con) {
-    die('Could not connect: ' . mysqli_error($con));
-}
-mysqli_select_db($con,"astha_clinic");
+//$con = mysqli_connect('localhost','root','','astha_clinic');
+//if (!$con) {
+//    die('Could not connect: ' . mysqli_error($con));
+//}
+//mysqli_select_db($con,"astha_clinic");
+    include_once("db/connection.php");
 $sql="select id,name,contact,dob,place from patient_details where name like '".$name."%';";
 $result = mysqli_query($con,$sql);
 ?>
